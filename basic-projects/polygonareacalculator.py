@@ -46,31 +46,28 @@ class Rectangle:
             result += ("*" * self.width) + "\n"
         return result
     
-    def get_amount_inside(self):
-        pass
+    def get_amount_inside(self, other):
+        across = self.width // other.width
+        down = self.height // other.height
+        return across * down
             
 class Square(Rectangle):
     def __init__(self, side):
         super().__init__(side, side)
-        self._side = side
         
     @property
     def side(self):
-        return self._side
+        return self._width
     
-    def set_width(self, new_side):
-        if not isinstance(new_side, (float, int)):
-            raise TypeError("'Width must be a integer or float'")
+    def set_side(self, new_side):
         self._width = new_side
+        self._height = new_side
+        
+    def set_width(self, new_side):
+        self.set_side(new_side)
         
     def set_height(self, new_side):
-        if not isinstance(new_side, (float, int)):
-            raise TypeError("'Width must be a integer or float'")
-        self._height = new_side
-        
-    def set_side(self, new_side):
-        self._height = new_side
-        self._width = new_side
+        self.set_side(new_side)
     
     def __str__(self):
         return f"Square(side={self.side})"       
