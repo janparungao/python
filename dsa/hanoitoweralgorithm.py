@@ -14,7 +14,6 @@ def hanoi_solver(total_disks: int):
             
     if total_disks < 1:
         raise ValueError("n must be greater then or equal to 1")
-    # moves = (2**total_disks) - 1
     rods = {
         "A" : list(range(total_disks,0, -1)),
         "B" : [],
@@ -26,5 +25,4 @@ def hanoi_solver(total_disks: int):
     solver(total_disks, "A", "C", "B")
     return "\n".join(states)
 
-        
-print(hanoi_solver(3))
+print(hanoi_solver(4))
